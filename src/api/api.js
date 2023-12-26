@@ -44,3 +44,19 @@ async function request(url, method, data){
 }
 }
 
+
+export async function get(url){
+    return request(url, 'get')
+}
+
+export async function post(url, data){
+    return request(url, 'post', data)
+}
+
+export async function put(url, data){
+    return request(url, 'put', data)
+}
+
+export async function del(url){
+    return request(url, 'delete')
+}
