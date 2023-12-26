@@ -4,7 +4,7 @@ export function getUserData(){
 }
 
 export function setUserData(data){
-    sessionStorage.setItem(JSON.stringify(data))
+    sessionStorage.setItem('userData', JSON.stringify(data))
 }
 
 export function removeUserData(){
