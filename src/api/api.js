@@ -1,3 +1,5 @@
+import { getUserData } from "../util.js";
+
 const host = 'http://localhost:3030';
 
 async function request(url, method, data){
@@ -9,6 +11,12 @@ async function request(url, method, data){
     if(data != undefined){
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
+    }
+
+    const userData = getUserData();
+
+    if (userData) {
+        options.headers['X-Authorization'] = userData.accessToken
     }
 
     try{
@@ -34,6 +42,5 @@ async function request(url, method, data){
     throw err;
 
 }
-
-
 }
+
