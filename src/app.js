@@ -1,5 +1,6 @@
 import { render, page } from './lib.js'
 import { allMems } from './views/allmemes.js';
+import { createView } from './views/create.js';
 import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { registerView } from './views/register.js';
@@ -14,7 +15,7 @@ page('/register', registerView);
 page('/memes', allMems);
 page('/memes/:id', () => console.log('meme detail'));
 page('/edit/:id', () => console.log('edit'));
-page('/create', () => console.log('create meme'));
+page('/create', createView);
 page('/profile', () => console.log('profile'));
 
 

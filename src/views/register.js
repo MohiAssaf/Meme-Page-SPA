@@ -21,7 +21,7 @@ const registerTemplate = () => html`
         </div>
         <input type="submit" class="registerbtn button" value="Register">
         <div class="container signin">
-            <p>Already have an account?<a href="/login">Sign in</a>.</p>
+            <p>Already have an account? <a href="/login">Sign in</a>.</p>
         </div>
     </div>
 </form>
