@@ -1,6 +1,6 @@
 import { render, page } from './lib.js'
 import { allMems } from './views/allmemes.js';
-import { createView } from './views/create.js';
+import { createView } from './views/createMeme.js';
 import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { profileView } from './views/profile.js';
