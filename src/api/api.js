@@ -1,6 +1,6 @@
 import { getUserData } from "../util.js";
 
-const host = 'http://localhost:3030';
+const hostname = 'http://localhost:3030';
 
 async function request(url, method, data){
     const options = {
@@ -21,7 +21,7 @@ async function request(url, method, data){
 
     try{
 
-    const res = await fetch(host + url, options)
+    const res = await fetch(hostname + url, options)
     
     if(res.ok == false){
 

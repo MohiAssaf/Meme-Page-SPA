@@ -1,5 +1,5 @@
 import { render, page } from './lib.js'
-import { allMems } from './views/allMemes.js';
+import { allMemesView } from './views/allMemes.js';
 import { createView } from './views/createMeme.js';
 import { detailsView } from './views/detailsMeme.js';
 import { editMemeView } from './views/editmeme.js';
@@ -15,7 +15,7 @@ page(decorateContext); // this func will always be executed on all routes
 page('/', homeView);
 page('/login', loginView);
 page('/register', registerView);
-page('/memes', allMems);
+page('/memes', allMemesView);
 page('/memes/:id', () => detailsView);
 page('/edit/:id', editMemeView);
 page('/create', createView);
