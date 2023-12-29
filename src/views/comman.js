@@ -1,0 +1,15 @@
+import { html } from '../lib.js'
+
+
+export const PreviewMemes = (meme) => html`
+<div class="meme">
+<div class="card">
+    <div class="info">
+        <p class="meme-title">${meme.title}</p>
+        <img class="meme-image" alt="meme-img" src="${meme.imageUrl}">
+    </div>
+    <div id="data-buttons">
+        <a class="button" href="/data/memes/${meme._id}">Details</a>
+    </div>
+</div>
+</div>`
