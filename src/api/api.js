@@ -1,52 +1,54 @@
-import { getUserData } from "../util.js";
+import { getUserData, removeUserData } from "../util.js";
 
 let hostname = 'http://localhost:3030';
 
 
-async function request(url, options) {
-    try {
-        let response = await fetch(hostname + url, options)
-
-        if (response.ok == false) {
-            const error = await response.json()
-            throw new Error(error.message)
-        }
-
-        if (response.status == 204) {
-            return response
-        } else {
-            return response.json()
-        }
-    } catch (error) {
-        alert(error.message)
-        throw error
-    }
-}
-
-
-
-function createOptions(method = "get", data) {
+async function request(url, method, data){
     const options = {
         method,
         headers: {}
+    };
 
-    }
 
-    if (data != undefined) {
+    if(data != undefined){
         options.headers['Content-Type'] = 'application/json';
-        options.body = JSON.stringify(data)
+        options.body = JSON.stringify(data);
     }
 
-    let userData = getUserData()
-
-    if (userData) {
-        options.headers['X-Authorization'] = userData.accessToken
+    const userData = getUserData();
+    if(userData){
+        options.headers['X-Authorization'] = userData.accessToken;
     }
 
-    return options
+    try{
+
+    const res = await fetch(hostname + url, options)
+
+    if(res.ok == false){
+
+        if(res.status == 403){
+            removeUserData(); // to void issue with an invalid token
+         }
+
+        const error = await res.json()
+
+        throw new Error(error.message)
+    }
+
+    if (res.status == 204){ // this is to check if we have an empty response
+        return res;
+
+    }else{
+        return res.json()
+    }
+
+} catch (err) {
+
+    alert(err.message)
+    throw err;
+
 }
-
-
+}
 
 export async function get(url){
     return request(url, 'get')
