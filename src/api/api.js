@@ -24,30 +24,29 @@ async function request(url, method, data){
 
     try{
 
-    const res = await fetch(hostname + url, options)
-    console.log(res)
-    if(res.ok == false){
+        const res = await fetch(hostname + url, options)
+        console.log(res)
+        if(res.ok == false){
 
-        if(res.status == 403){
-            removeUserData(); // to avoid issue with an invalid token
-         }
+            if(res.status == 403){
+                removeUserData(); // to avoid issue with an invalid token
+            }
 
-        const error = await res.json()
+            const error = await res.json()
+            throw new Error(error.message)
+        }
 
-        throw new Error(error.message)
-    }
+        if (res.status == 204){ // this is to check if we have an empty response
+            return res;
 
-    if (res.status == 204){ // this is to check if we have an empty response
-        return res;
+        }else{
+            return res.json()
+        }
 
-    }else{
-        return res.json()
-    }
+    } catch (err) {
 
-} catch (err) {
-
-    alert(err.message)
-    throw err;
+        alert(err.message)
+        throw err;
 
 }
 }
