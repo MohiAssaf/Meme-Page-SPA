@@ -21,9 +21,9 @@ const loginTemplate = (onSubmit) => html`
 export function loginView(ctx){
     ctx.render(loginTemplate(onSubmit))
 
-    async function onSubmit(e){
-        e.preventDefault();
-        const formData = new FormData(e.target);
+    async function onSubmit(event){
+        event.preventDefault();
+        const formData = new FormData(event.target);
 
         const email = formData.get('email').trim();
         const password = formData.get('password').trim(); // getting the data in the form
@@ -33,7 +33,7 @@ export function loginView(ctx){
         }
 
         await login(email, password);
-        ctx.redirect('/memes')
+        ctx.page.redirect('/memes')
 
     }
 }

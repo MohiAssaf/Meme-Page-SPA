@@ -16,6 +16,8 @@ async function request(url, method, data){
     }
 
     const userData = getUserData();
+    console.log(userData)
+    //console.log(userData.accessToken)
     if(userData){
         options.headers['X-Authorization'] = userData.accessToken;
     }
@@ -23,11 +25,11 @@ async function request(url, method, data){
     try{
 
     const res = await fetch(hostname + url, options)
-
+    console.log(res)
     if(res.ok == false){
 
         if(res.status == 403){
-            removeUserData(); // to void issue with an invalid token
+            removeUserData(); // to avoid issue with an invalid token
          }
 
         const error = await res.json()
