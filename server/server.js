@@ -1529,7 +1529,7 @@
   );
   console.log(`Admin panel located at http://localhost:${port}/admin`);
 
-  var softuniPracticeServer = {};
+  var PracticeServer = {};
 
-  return softuniPracticeServer;
+  return PracticeServer;
 });
