@@ -1,5 +1,6 @@
 import {login} from '../api/users.js'
 import { html } from '../lib.js'
+import { updateNavigation } from '../app.js'
 
 const loginTemplate = (onSubmit) => html`
 <section id="login">
@@ -33,6 +34,7 @@ export function loginView(ctx){
         }
 
         await login(email, password);
+        ctx.updateNavigation()
         ctx.page.redirect('/memes')
 
     }

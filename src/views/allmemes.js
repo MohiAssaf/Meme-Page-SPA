@@ -15,5 +15,5 @@ export async function allMemesView(ctx){
     let allmemes = await getAllMemes();
 
 
-    ctx.render(AllMemesTemplate([]))
+    ctx.render(AllMemesTemplate(allmemes))
 }

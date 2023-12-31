@@ -2,7 +2,7 @@ import { removeUserData, setUserData } from "../util.js";
 import { get, post } from "./api.js";
 
 export async function login(email, password){
-    const result = post('/users/login', {email, password})
+    const result = await post('/users/login', {email, password})
 
     const userData ={
         id: result._id,
@@ -14,11 +14,11 @@ export async function login(email, password){
 
     setUserData(userData)
 
-    return result;
+    return result
 }
 
 export async function register(username, email, password, gender){
-    const result = post('/users/register', {username, email, password, gender})
+    const result = await post('/users/register', {username, email, password, gender})
 
     const userData ={
         id: result._id,

@@ -9,7 +9,7 @@ export const PreviewMemes = (meme) => html`
         <img class="meme-image" alt="meme-img" src="${meme.imageUrl}">
     </div>
     <div id="data-buttons">
-        <a class="button" href="/data/memes/${meme._id}">Details</a>
+        <a class="button" href="/memes/${meme._id}">Details</a>
     </div>
 </div>
 </div>`

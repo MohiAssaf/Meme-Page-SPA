@@ -1,4 +1,5 @@
 import { render, page } from './lib.js';
+import { getUserData } from './util.js';
 import { allMemesView } from './views/allmemes.js';
 import { createView } from './views/createMeme.js';
 import { detailsView } from './views/detailsMeme.js';
@@ -16,13 +17,13 @@ page('/', homeView);
 page('/login', loginView);
 page('/register', registerView);
 page('/memes', allMemesView);
-page('/memes/:id', () => detailsView);
+page('/memes/:id', detailsView);
 page('/edit/:id', editMemeView);
 page('/create', createView);
 page('/profile', profileView);
 
 
-
+updateNavigation();
 page.start(); // starting the application
 
 function decorateContext(ctx, next) { // instead od adding the view in the main in each one of the templates
@@ -34,4 +35,18 @@ function decorateContext(ctx, next) { // instead od adding the view in the main 
 
 function renderMain(templateResult) {
     render(templateResult, main)
+}
+
+
+export function updateNavigation(){ // func that updates the nav based on if its a user logged in or a guest
+    const userData = getUserData()
+
+    if(userData){
+        document.querySelector('.user').style.display = 'block';
+        document.querySelector('.guest').style.display = 'none';
+        document.querySelector('.user span').textContent = `Welcom,  ${userData.email}`
+    }else{
+        document.querySelector('.user').style.display = 'none';
+        document.querySelector('.guest').style.display = 'block';
+    }
 }
