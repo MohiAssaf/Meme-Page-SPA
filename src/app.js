@@ -28,7 +28,7 @@ page.start(); // starting the application
 
 function decorateContext(ctx, next) { // instead od adding the view in the main in each one of the templates
     ctx.render = renderMain;
-
+    ctx.updateNavigation = updateNavigation;
     next();
 }
 

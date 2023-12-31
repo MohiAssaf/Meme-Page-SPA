@@ -1,6 +1,5 @@
 import {login} from '../api/users.js'
 import { html } from '../lib.js'
-import { updateNavigation } from '../app.js'
 
 const loginTemplate = (onSubmit) => html`
 <section id="login">
