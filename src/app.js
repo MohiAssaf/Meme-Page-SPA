@@ -44,7 +44,7 @@ export function updateNavigation(){ // func that updates the nav based on if its
     if(userData){
         document.querySelector('.user').style.display = 'block';
         document.querySelector('.guest').style.display = 'none';
-        document.querySelector('.user span').textContent = `Welcom,  ${userData.email}`
+        document.querySelector('.user span').textContent = `Welcom,  ${userData.username}`
     }else{
         document.querySelector('.user').style.display = 'none';
         document.querySelector('.guest').style.display = 'block';
