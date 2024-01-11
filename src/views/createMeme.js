@@ -1,8 +1,10 @@
+import { post } from "../api/api.js";
+import { createMeme } from "../api/meme.js";
 import { html } from "../lib.js";
 
-const createTemplate = () => html`
+const createTemplate = (onSubmit) => html`
 <section id="create-meme">
-<form id="create-form">
+<form @submit=${onSubmit} id="create-form">
     <div class="container">
         <h1>Create Meme</h1>
         <label for="title">Title</label>
@@ -17,5 +19,27 @@ const createTemplate = () => html`
 </section>`
 
 export function createView(ctx) {
-    ctx.render(createTemplate())
+    ctx.render(createTemplate(onSubmit))
+
+    async function onSubmit(e){
+        e.preventDefault();
+
+        const formData = new FormData(e.target)
+
+        const meme = {
+            title: formData.get('title'),
+            description: formData.get('description'),
+            image: formData.get('imageUrl'),
+
+        }
+
+        if(meme.title == '' || meme.description == '' || meme.image == ''){
+            return alert('All fields are requried !!!!')
+        }
+
+        await createMeme(meme)
+        e.target.reset()
+        ctx.page.redirect('/memes')
+
+    }
 }

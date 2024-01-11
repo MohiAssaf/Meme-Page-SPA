@@ -8,3 +8,7 @@ import * as api from './api.js';
 export async function getAllMemes(){
     return api.get("/data/memes?sortBy=_createdOn%20desc")
 }
+
+export async function createMeme(data){
+    return api.post('/data/memes', data)
+}
