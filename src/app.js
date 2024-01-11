@@ -8,9 +8,11 @@ import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { profileView } from './views/profile.js';
 import { registerView } from './views/register.js';
+import { logout } from './api/users.js';
 
 
 const main = document.querySelector('main') // where the views should be displayed
+document.getElementById('logoutBtn').addEventListener('click', logOut)
 
 page(decorateContext); // this func will always be executed on all routes
 page('/', homeView);
@@ -38,9 +40,8 @@ function renderMain(templateResult) {
 }
 
 
-export function updateNavigation(){ // func that updates the nav based on if its a user logged in or a guest
+function updateNavigation(){ // func that updates the nav based on if its a user logged in or a guest
     const userData = getUserData()
-
     if(userData){
         document.querySelector('.user').style.display = 'block';
         document.querySelector('.guest').style.display = 'none';
@@ -48,5 +49,17 @@ export function updateNavigation(){ // func that updates the nav based on if its
     }else{
         document.querySelector('.user').style.display = 'none';
         document.querySelector('.guest').style.display = 'block';
+    }
+}
+
+
+async function logOut() { /// logout a user when clicking on the logoutbtn
+    
+    try {
+        await logout();
+        updateNavigation();
+        page.redirect('/');
+    } catch (error) {
+        console.error('Logout error:', error);
     }
 }

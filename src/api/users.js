@@ -33,7 +33,7 @@ export async function register(username, email, password, gender){
     return result;
 }
 
-export function logout(){
-    get('/users/logout');
+export async function logout(){
+    await get('/users/logout');
     removeUserData();
 }
