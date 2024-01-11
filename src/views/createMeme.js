@@ -1,4 +1,3 @@
-import { post } from "../api/api.js";
 import { createMeme } from "../api/meme.js";
 import { html } from "../lib.js";
 
@@ -33,13 +32,13 @@ export function createView(ctx) {
 
         }
 
-        if(meme.title == '' || meme.description == '' || meme.image == ''){
+        if(meme.title == '' || meme.description == '' || meme.image == ''){ // check if all fields are filled
             return alert('All fields are requried !!!!')
         }
 
         await createMeme(meme)
-        e.target.reset()
-        ctx.page.redirect('/memes')
+        e.target.reset(); // reset all fields
+        ctx.page.redirect('/memes') // redirect after creation
 
     }
 }
