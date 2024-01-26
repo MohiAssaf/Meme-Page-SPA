@@ -12,3 +12,7 @@ export async function getAllMemes(){
 export async function createMeme(data){
     return api.post('/data/memes', data)
 }
+
+export async function detailsMeme(id){
+    return api.get('/data/memes/' + id);
+}
