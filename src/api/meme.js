@@ -16,3 +16,7 @@ export async function createMeme(data){
 export async function detailsMeme(id){
     return api.get('/data/memes/' + id);
 }
+
+export async function deleteMeme(id){
+    return api.del('/data/memes/' + id)
+}
