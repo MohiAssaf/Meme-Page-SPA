@@ -1,8 +1,8 @@
 import { html } from "../lib.js";
 
-const editMemeTemplate = () => html`
+const editMemeTemplate = (onSubmit) => html`
 <section id="edit-meme">
-<form id="edit-form">
+<form @submit=${onSubmit} id="edit-form">
     <h1>Edit Meme</h1>
     <div class="container">
         <label for="title">Title</label>
@@ -24,5 +24,12 @@ const editMemeTemplate = () => html`
 </section>`
 
 export function editMemeView(ctx){
-    ctx.render(editMemeTemplate())
+    ctx.render(editMemeTemplate(onSubmit))
+
+    async function onSubmit(e){
+        e.preventDefault();
+        const formData = new FormData(e.target)
+
+
+    }
 }
