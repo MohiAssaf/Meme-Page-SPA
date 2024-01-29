@@ -1,4 +1,4 @@
-import { detailsMeme } from "../api/meme.js";
+import { detailsMeme, updateMeme } from "../api/meme.js";
 import { html } from "../lib.js";
 
 const editMemeTemplate = (meme, onSubmit) => html`
@@ -23,10 +23,24 @@ export async function editMemeView(ctx){
 
     async function onSubmit(e){
         e.preventDefault();
-        const formData = new FormData(e.target)
+        const formData = new FormData(e.target);
+        const memeId = ctx.params.id
 
+        const meme = {
+            title: formData.get('title'),
+            description: formData.get('description'),
+            image: formData.get('imageUrl'),
 
+        }
 
+        if(meme.title == '' || meme.description == '' || meme.image == ''){ // check if all fields are filled
+            return alert('All fields are requried !!!!')
+        }
+
+        await updateMeme(memeId, meme)
+        e.target.reset(); // reset all fields
+        ctx.page.redirect(`/memes/${memeId}`) // redirect after creation
 
     }
+
 }
