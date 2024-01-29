@@ -1,4 +1,6 @@
+import { userMemes } from "../api/meme.js";
 import { html } from "../lib.js";
+import { getUserData } from "../util.js";
 import {PreviewUserMemes} from './comman.js'
 
 const profileTemplate = (memes) => html`
@@ -21,11 +23,10 @@ const profileTemplate = (memes) => html`
 </div>
 </section>`
 
-export function profileView(ctx){
-    // const gender = ctx.params.gender
+export async function profileView(ctx){
+    const user = getUserData()
+    const memes = await userMemes(user.id)
 
-    // const memes = getAllMemes
 
-
-    ctx.render(profileTemplate())
+    ctx.render(profileTemplate(memes))
 }
