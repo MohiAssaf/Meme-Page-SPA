@@ -1,7 +1,5 @@
-import { getAllMemes } from "../api/meme.js";
 import { html } from "../lib.js";
-import { getUserData } from "../util.js";
-import {PreviewMemes} from './comman.js'
+import {PreviewUserMemes} from './comman.js'
 
 const profileTemplate = (memes) => html`
 <section id="user-profile-page" class="user-profile">
@@ -17,16 +15,16 @@ const profileTemplate = (memes) => html`
 <div class="user-meme-listings">
     ${
         memes.length == 0 ? html `<p class="no-memes">No memes in database.</p>`
-        : html `<div id="memes">${memes.map(PreviewUserMemes)}`
+        : memes.map(PreviewUserMemes)
     }
 
 </div>
 </section>`
 
 export function profileView(ctx){
-    const gender = ctx.params.gender
+    // const gender = ctx.params.gender
 
-    const memes = getAllMemes
+    // const memes = getAllMemes
 
 
     ctx.render(profileTemplate())
