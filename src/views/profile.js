@@ -3,14 +3,14 @@ import { html } from "../lib.js";
 import { getUserData } from "../util.js";
 import {PreviewUserMemes} from './comman.js'
 
-const profileTemplate = (memes) => html`
+const profileTemplate = (memes, user) => html`
 <section id="user-profile-page" class="user-profile">
 <article class="user-info">
-    <img id="user-avatar-url" alt="user-profile" src="/images/female.png">
+    <img id="user-avatar-url" alt="user-profile" src="/images/${user.gender == 'Female' ? 'female.png' : 'male.png'}">
     <div class="user-content">
-        <p>Username: Mary</p>
-        <p>Email: mary@abv.bg</p>
-        <p>My memes count: 2</p>
+        <p>Username: ${user.username}</p>
+        <p>Email: ${user.email}</p>
+        <p>My memes count: ${memes.length}</p>
     </div>
 </article>
 <h1 id="user-listings-title">User Memes</h1>
@@ -29,5 +29,5 @@ export async function profileView(ctx){
     const memes = await userMemes(user.id);
 
 
-    ctx.render(profileTemplate(memes))
+    ctx.render(profileTemplate(memes, user))
 }
