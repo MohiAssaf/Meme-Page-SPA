@@ -23,6 +23,7 @@ const profileTemplate = (memes) => html`
 </div>
 </section>`
 
+
 export async function profileView(ctx){
     const user = getUserData()
     const memes = await userMemes(user.id)
