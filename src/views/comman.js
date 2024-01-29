@@ -13,3 +13,12 @@ export const PreviewMemes = (meme) => html`
     </div>
 </div>
 </div>`
+
+export const PreviewUserMemes = (meme) => {html `
+    <div class="user-meme">
+        <p class="user-meme-title">${meme.title}</p>
+        <img src=${meme.imageUrl} alt="meme-img" class="userProfileImage">
+        <a href="/memes/${meme._id}" class="button">Details</a>
+    </div>
+    `
+}
