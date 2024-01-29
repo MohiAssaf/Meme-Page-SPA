@@ -24,3 +24,7 @@ export async function deleteMeme(id){
 export async function updateMeme(id, meme){
     return api.put('/data/memes/' + id, meme)
 }
+
+export async function userMemes(userId){
+    return api.get(`/data/memes?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`)
+}
