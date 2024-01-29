@@ -25,8 +25,8 @@ const profileTemplate = (memes) => html`
 
 
 export async function profileView(ctx){
-    const user = getUserData()
-    const memes = await userMemes(user.id)
+    const user = getUserData();
+    const memes = await userMemes(user.id);
 
 
     ctx.render(profileTemplate(memes))

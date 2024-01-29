@@ -3,7 +3,7 @@ import { getUserData } from './util.js';
 import { allMemesView } from './views/allmemes.js';
 import { createView } from './views/createMeme.js';
 import { detailsView } from './views/detailsMeme.js';
-import { editMemeView } from './views/editmeme.js';
+import { editMemeView } from './views/editMeme.js';
 import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { profileView } from './views/profile.js';

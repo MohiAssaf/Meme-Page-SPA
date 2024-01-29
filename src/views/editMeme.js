@@ -38,7 +38,6 @@ export async function editMemeView(ctx){
         }
 
         await updateMeme(memeId, meme)
-        e.target.reset(); // reset all fields
         ctx.page.redirect(`/memes/${memeId}`) // redirect after creation
 
     }
