@@ -4,12 +4,13 @@ import { getUserData } from '../util.js'
 const homeTemplate = () => html`
 <section id="welcome">
 
-<div class="container">
-    <h1>Welcome to Our Awesome Website!</h1>
-    <img src="/images/back.jpg" alt="Welcome Image">
+<div class="welcome-container">
+    <h1>Welcome to Meme Lounge</h1>
+    <img src="https://gifdb.com/images/high/hasbulla-relax-resting-chair-hello-arm-raise-iakob9dpl9at1x0n.gif" alt="Welcome Image">
+    <h2>Loging to see more memes</h2>
     <div class="button-container">
-        <a href="login.html" class="button login-button">Login</a>
-        <a href="register.html" class="button register-button">Register</a>
+        <a href="/login" class="button login-button">Login</a>
+        <a href="/register" class="button register-button">Register</a>
     </div>
 </div>
 </section>`
