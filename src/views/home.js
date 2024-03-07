@@ -3,6 +3,11 @@ import { getUserData } from '../util.js'
 
 const homeTemplate = () => html`
 <section id="welcome">
+<div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+</div>
 
 <div class="welcome-container">
     <h1>Welcome to Meme Lounge</h1>
