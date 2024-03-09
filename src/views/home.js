@@ -12,7 +12,7 @@ const homeTemplate = () => html`
 <div class="welcome-container">
     <h1>Welcome to Meme Lounge</h1>
     <img src="https://gifdb.com/images/high/hasbulla-relax-resting-chair-hello-arm-raise-iakob9dpl9at1x0n.gif" alt="Welcome Image">
-    <h2>Loging to see more memes</h2>
+    <h2>Loging/Register to see more memes</h2>
     <div class="button-container">
         <a href="/login" class="button login-button">Login</a>
         <a href="/register" class="button register-button">Register</a>
